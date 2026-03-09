@@ -22,14 +22,16 @@
             </div>
         </div>
     </nav>
-    <div class="container p-5">
-        <div class="mb-3">
+    <div class="container mt-5">
+        <div class="float-end">
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add Expense</button>
         </div>
-        <div class="mb-3">
+        <div class="float-start">
             <label class="text-success"><b>Total Spent</b></label>
             <b>1500</b>
         </div>
+    </div>
+    <div class="container py-5 px-5">
         <div class="d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
@@ -47,6 +49,33 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="addExpenseModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseModalLabel" aria-hidden="true">
+        <form id="addExpenseForm">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addExpenseModalLabel">Add Expense</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-1">
+                            <label for="addExpenseDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="addExpenseDescription" name="addExpenseDescription" rows="3" placeholder="Add your Expense Description" required></textarea>
+                        </div>
+                        <div class="mb-1">
+                            <label for="addExpenseExpenditureDate" class="form-label">Expenditure Date</label>
+                            <input type="date" class="form-control" id="addExpenseExpenditureDate" name="addExpenseExpenditureDate" required>
+                        </div>
+                        <div class="mb-1">
+                            <label for="addExpenseSpentAmount" class="form-label">Spent Amount</label>
+                            <input type="number" class="form-control" id="addExpenseSpentAmount" name="addExpenseSpentAmount" step="0.01" placeholder="Enter the amount spent" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
