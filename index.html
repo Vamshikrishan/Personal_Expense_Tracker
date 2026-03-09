@@ -28,7 +28,7 @@
         </div>
         <div class="float-start">
             <label class="text-success"><b>Total Spent</b></label>
-            <b>1500</b>
+            <b><span id="totalSpent"></span></b>
         </div>
     </div>
     <div class="container py-5 px-5">
@@ -83,6 +83,7 @@
         </div>
     </div>
     <script>
+        getTotalExpenditure();
         createTableFromJSON();
         function showExpenseModel() {
             $('#addExpenseModal').modal('show');
@@ -109,6 +110,7 @@
             }
             localStorage.setItem('expenseTracker', JSON.stringify(storageObjectArr));
             createTableFromJSON();
+            getTotalExpenditure();
             $('#addExpenseForm').trigger('reset');
             $('#addExpenseModal').modal('hide');
         }
@@ -139,6 +141,29 @@
                 html = '<tr><td colspan="4" class="text-center">No Data Found</td></tr>';
             }
             $('#expenseTableBody').html(html);
+        }
+        function getTotalExpenditure()
+        {
+            var storageObjectArr = [];
+            var storageObject = localStorage.getItem('expenseTracker');
+            var storageObjectArr = JSON.parse(storageObject);
+            var html = '';
+            if(storageObjectArr != null && storageObjectArr != undefined && storageObject != '') {
+                if(storageObjectArr && storageObjectArr.length > 0) {
+                    for(let i in storageObjectArr) {
+                        spent = parseInt(storageObjectArr[i].addExpenseSpentAmount);
+                    }
+                }
+                else
+                {
+                    spent = 0;
+                }
+            }
+            else
+            {
+                spent = 0;
+            }
+            $('#totalSpent').html(spent);
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
