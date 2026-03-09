@@ -43,6 +43,9 @@
                                 <th>Date</th>
                                 <th>Spent Amount</th>
                             </thead>
+                            <tbody id="expenseTableBody">
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -80,6 +83,7 @@
         </div>
     </div>
     <script>
+        createTableFromJSON();
         function showExpenseModel() {
             $('#addExpenseModal').modal('show');
         }
@@ -98,9 +102,43 @@
             console.log(expenseObjeect)
             if(storageObject != null && storageObject != undefined && storageObject != '') {
                 storageObjectArr = JSON.parse(storageObject);
-                
+                storageObjectArr.push(expenseObjeect);
             }
+            else {
+                storageObjectArr.push(expenseObjeect);
+            }
+            localStorage.setItem('expenseTracker', JSON.stringify(storageObjectArr));
+            createTableFromJSON();
+            $('#addExpenseForm').trigger('reset');
             $('#addExpenseModal').modal('hide');
+        }
+        function createTableFromJSON()
+        {
+            var storageObjectArr = [];
+            var storageObject = localStorage.getItem('expenseTracker');
+            var storageObjectArr = JSON.parse(storageObject);
+            var html = '';
+            if(storageObjectArr != null && storageObjectArr != undefined && storageObject != '') {
+                if(storageObjectArr && storageObjectArr.length > 0) {
+                    for(let i in storageObjectArr) {
+                        var data = new Date(storageObjectArr[i].addExpenseExpenditureDate);
+                        html = html + '<tr>' + '<td>' + (parseInt(i) + 1) + '</td>' +
+                        '<td>' + storageObjectArr[i].addExpenseDescription + '</td>' +
+                        '<td>' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear() + '</td>' +
+                        '<td>' + storageObjectArr[i].addExpenseSpentAmount + '</td>' +
+                        '</tr>';
+                    }
+                }
+                else
+                {
+                    html = '<tr><td colspan="4" class="text-center">No Data Found</td></tr>';
+                }
+            }
+            else
+            {
+                html = '<tr><td colspan="4" class="text-center">No Data Found</td></tr>';
+            }
+            $('#expenseTableBody').html(html);
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
