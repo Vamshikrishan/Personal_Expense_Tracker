@@ -24,7 +24,7 @@
     </nav>
     <div class="container mt-5">
         <div class="float-end">
-            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add Expense</button>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal" onclick="showExpenseModel()">Add Expense</button>
         </div>
         <div class="float-start">
             <label class="text-success"><b>Total Spent</b></label>
@@ -71,11 +71,38 @@
                             <input type="number" class="form-control" id="addExpenseSpentAmount" name="addExpenseSpentAmount" step="0.01" placeholder="Enter the amount spent" required>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveExpense()">Add Expense</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script></script>
+    <script>
+        function showExpenseModel() {
+            $('#addExpenseModal').modal('show');
+        }
+
+        function saveExpense() {
+            var dataArr = $('#addExpenseForm').serializeArray();
+            console.log(dataArr);
+            var expenseObjeect = new Object();
+            var storageObjectArr = [];
+            var storageObject = localStorage.getItem('expenseTracker');
+            for(var i in dataArr) {
+                var name = dataArr[i].name;
+                var value = dataArr[i].value;
+                expenseObjeect[name] = value;
+            }
+            console.log(expenseObjeect)
+            if(storageObject != null && storageObject != undefined && storageObject != '') {
+                storageObjectArr = JSON.parse(storageObject);
+                
+            }
+            $('#addExpenseModal').modal('hide');
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
