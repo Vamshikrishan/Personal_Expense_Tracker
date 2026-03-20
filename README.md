@@ -65,16 +65,27 @@ A full-stack web application to manage and track your personal expenses efficien
 ### 📊 Project Structure
 
 ├── client/                 # React frontend
+
 │   ├── src/
+
 │   │   ├── components/     # Reusable React components
+
 │   │   ├── pages/          # Page components
+
 │   │   └── styles/         # CSS and Tailwind styles
+
 │   └── package.json
+
 ├── server/                 # Node.js backend
+
 │   ├── models/             # MongoDB schemas
+
 │   ├── routes/             # API endpoints
+
 │   ├── controllers/        # Business logic
+
 │   └── server.js           # Express server entry point
+
 └── package.json
 
 ### 🤝 Contributing
