@@ -38,16 +38,64 @@ A full-stack web application to manage and track your personal expenses efficien
    cd Personal_Expense_Tracker
 
 2. **Install backend dependencies**
+   ```bash
    npm install
 
-3. **Install frontend dependencies**
+4. **Install frontend dependencies**
+   ```bash
    cd client
    npm install
    cd ..
 
-4. **Set up environment variables Create a .env file in the root directory:**
+6. **Set up environment variables Create a .env file in the root directory:**
+   ```bash
    MONGODB_URI=your_mongodb_connection_string
    PORT=5000
 
-5. **Start the application**
+8. **Start the application**
+   ```bash
    npm run dev
+
+### 🚀 Usage
+
+1. Open your browser and navigate to http://localhost:3000
+2. Create an account or log in
+3. Add new expenses by clicking the "Add Expense" button
+4. View your expense history and analytics
+5. Filter expenses by category or date range
+6. Export your expense data (if available)
+
+### 📊 Project Structure
+
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable React components
+│   │   ├── pages/          # Page components
+│   │   └── styles/         # CSS and Tailwind styles
+│   └── package.json
+├── server/                 # Node.js backend
+│   ├── models/             # MongoDB schemas
+│   ├── routes/             # API endpoints
+│   ├── controllers/        # Business logic
+│   └── server.js           # Express server entry point
+└── package.json
+
+### 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
+
+### 📝 License
+
+This project is open source and available under the MIT License.
+
+### 💬 Support
+
+If you have any questions or issues, please open an issue on the [GitHub repository](https://github.com/Vamshikrishan/Personal_Expense_Tracker/issues).
+
+**Made with ❤️ by [Vamshikrishan](https://github.com/Vamshikrishan)**
